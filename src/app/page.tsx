@@ -8,6 +8,7 @@ import flex from '../styles/flex.module.css';
 import text from '../styles/text.module.css';
 import layout from '../styles/layout.module.css';
 import styles from './styles.module.css';
+import ParallaxText from '../components/ParallaxText';
 
 const Card = () => {
   return (
@@ -139,6 +140,14 @@ const IndexPage = () => {
               ))}
           </motion.div>
         </motion.div>
+      </motion.section>
+      <motion.section
+        className={classNames(layout['py-128'], flex['flex-col'])}
+      >
+        <ParallaxText>React Scroll Interaction Example</ParallaxText>
+        <ParallaxText baseVelocity={-3}>
+          React Scroll Interaction Example
+        </ParallaxText>
       </motion.section>
     </>
   );

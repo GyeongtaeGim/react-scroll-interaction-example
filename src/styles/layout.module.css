@@ -5,6 +5,10 @@
   margin-right: auto;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .py-32 {
   padding-top: 32px;
   padding-bottom: 32px;
@@ -13,4 +17,9 @@
 .py-64 {
   padding-top: 64px;
   padding-bottom: 64px;
+}
+
+.py-128 {
+  padding-top: 128px;
+  padding-bottom: 128px;
 }
