@@ -8,3 +8,9 @@ html, body {
   padding:0;
   box-sizing: border-box;
 }
+
+@media (max-width: 680px) {
+  html, body {
+    font-size: 12px;
+  }
+}
