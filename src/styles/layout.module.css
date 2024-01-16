@@ -5,8 +5,36 @@
   margin-right: auto;
 }
 
+.z--1 {
+  z-index: -1;
+}
+
 .overflow-hidden {
   overflow: hidden;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top--64 {
+  top: -64px
+}
+
+.top-0{
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.right-0 {
+  right: 0;
 }
 
 .py-32 {
@@ -22,4 +50,8 @@
 .py-128 {
   padding-top: 128px;
   padding-bottom: 128px;
+}
+
+.pt-32 {
+  padding-top: 32px;
 }

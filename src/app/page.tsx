@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 
 import classNames from 'classnames';
 
@@ -9,6 +9,7 @@ import text from '../styles/text.module.css';
 import layout from '../styles/layout.module.css';
 import styles from './styles.module.css';
 import ParallaxText from '../components/ParallaxText';
+import { useRef } from 'react';
 
 const Card = () => {
   return (
@@ -35,8 +36,55 @@ const Card = () => {
 };
 
 const IndexPage = () => {
+  const pathDivRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: pathDivRef,
+    offset: ['start start', 'end end'],
+  });
+
   return (
     <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        ref={pathDivRef}
+        className={classNames(
+          layout['absolute'],
+          layout['top--64'],
+          layout['z--1'],
+        )}
+      >
+        <svg
+          width='2377'
+          height='2814'
+          viewBox='0 0 2377 2814'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <motion.path
+            style={{ pathLength: scrollYProgress }}
+            d='M1512.01 25C1675.06 264.5 1139.38 92.5116 1169 332.5C1192.5 523 1603 423.5 1675.06 572.08C1868.49 970.896 337.358 807.025 366.995 1235C397.5 1675.5 1970.9 817.436 2304.12 1303.08C2671.49 1838.5 794.814 2262.94 274.219 2145.57C-246.375 2028.2 160 1657.5 495.626 1786.96C882.865 1936.32 1760.28 2526.33 2184.88 2789'
+            stroke='url(#paint0_linear_3_7)'
+            strokeWidth='50'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+          <defs>
+            <linearGradient
+              id='paint0_linear_3_7'
+              x1='1051.89'
+              y1='-174'
+              x2='1051.89'
+              y2='2812.5'
+              gradientUnits='userSpaceOnUse'
+            >
+              <stop stopColor='#00E0FF' />
+              <stop offset='1' stopColor='#000AFF' stopOpacity='0' />
+            </linearGradient>
+          </defs>
+        </svg>
+      </motion.div>
       <motion.section className={classNames(styles['main-visual-section'])}>
         <motion.div
           initial='hide'
@@ -121,7 +169,7 @@ const IndexPage = () => {
               hide: { opacity: 0, y: '30%' },
             }}
             transition={{ type: 'tween', duration: 0.8 }}
-            className={text['title2']}
+            className={classNames(text['title2'], layout['pt-32'])}
           >
             Card Interaction
           </motion.h2>
