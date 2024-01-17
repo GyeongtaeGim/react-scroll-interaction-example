@@ -16,6 +16,10 @@
   flex-wrap: nowrap;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
 .justfiy-center {
   justify-content: center;
 }

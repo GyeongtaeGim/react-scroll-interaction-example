@@ -28,6 +28,21 @@
   border-radius: 20px;
 }
 
+.appear-side-section {
+  height: 80vh;
+}
+
+.appear-side {
+  background-color: #efefef;
+  padding: 40px;
+  text-align: center;
+}
+
+.side-scroll {
+  height: 300vh;
+  width: 100vw;
+}
+
 @media (max-width: 1080px) {
   .card {
     flex: calc((100% / 2) - 48px);

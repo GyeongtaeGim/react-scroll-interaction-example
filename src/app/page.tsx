@@ -1,4 +1,4 @@
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 import classNames from 'classnames';
 
@@ -37,10 +37,28 @@ const Card = () => {
 
 const IndexPage = () => {
   const pathDivRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: pathScrollProgress } = useScroll({
     target: pathDivRef,
     offset: ['start start', 'end end'],
   });
+
+  const appearSectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: appearSideScrollProgress } = useScroll({
+    target: appearSectionRef,
+    offset: ['start center', 'end end'],
+  });
+  const appearSideLeftX = useTransform(
+    appearSideScrollProgress,
+    [0, 1],
+    ['0%', '-100%'],
+  );
+
+  const appearSideRightX = useTransform(
+    appearSideScrollProgress,
+    [0, 1],
+    ['0%', '100%'],
+  );
+
 
   return (
     <>
@@ -63,7 +81,7 @@ const IndexPage = () => {
           xmlns='http://www.w3.org/2000/svg'
         >
           <motion.path
-            style={{ pathLength: scrollYProgress }}
+            style={{ pathLength: pathScrollProgress }}
             d='M1512.01 25C1675.06 264.5 1139.38 92.5116 1169 332.5C1192.5 523 1603 423.5 1675.06 572.08C1868.49 970.896 337.358 807.025 366.995 1235C397.5 1675.5 1970.9 817.436 2304.12 1303.08C2671.49 1838.5 794.814 2262.94 274.219 2145.57C-246.375 2028.2 160 1657.5 495.626 1786.96C882.865 1936.32 1760.28 2526.33 2184.88 2789'
             stroke='url(#paint0_linear_3_7)'
             strokeWidth='50'
@@ -196,6 +214,48 @@ const IndexPage = () => {
         <ParallaxText baseVelocity={-3}>
           React Scroll Interaction Example
         </ParallaxText>
+      </motion.section>
+      <motion.section
+        className={classNames(
+          layout['py-128'],
+          flex['flex-col'],
+          flex['justfiy-center'],
+          styles['appear-side-section'],
+        )}
+      >
+        <motion.div
+          ref={appearSectionRef}
+          className={classNames(
+            layout['container'],
+            flex['flex-row'],
+            flex['gap-32'],
+            flex['item-center'],
+          )}
+        >
+          <motion.div
+            style={{
+              x: appearSideLeftX,
+            }}
+            className={classNames(
+              flex['flex-1'],
+              text['subtitle1'],
+              styles['appear-side'],
+            )}
+          >
+            React
+          </motion.div>
+          <motion.div className={classNames(text['title1'])}>Scroll</motion.div>
+          <motion.div
+            style={{ x: appearSideRightX }}
+            className={classNames(
+              flex['flex-1'],
+              text['subtitle1'],
+              styles['appear-side'],
+            )}
+          >
+            Interaction
+          </motion.div>
+        </motion.div>
       </motion.section>
     </>
   );
