@@ -59,6 +59,12 @@ const IndexPage = () => {
     ['0%', '100%'],
   );
 
+  const sideScrollSectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: sideScrollProgress } = useScroll({
+    target: sideScrollSectionRef,
+    offset: ['start start', 'end end'],
+  });
+  const sideScrollX = useTransform(sideScrollProgress, [0, 1], ['0%', '-200%']);
 
   return (
     <>
@@ -257,6 +263,60 @@ const IndexPage = () => {
           </motion.div>
         </motion.div>
       </motion.section>
+      <motion.section
+        ref={sideScrollSectionRef}
+        className={classNames(styles['side-scroll'])}
+      >
+        <motion.div
+          style={{ x: sideScrollX }}
+          className={classNames(
+            styles['side-scroll-container'],
+            flex['flex-row'],
+            flex['flex-nowrap'],
+          )}
+        >
+          <motion.div
+            className={classNames(
+              styles['side-scroll-content'],
+              text['title1'],
+              flex['flex-col'],
+              flex['item-center'],
+            )}
+          >
+            React
+          </motion.div>
+          <motion.div
+            className={classNames(
+              styles['side-scroll-content'],
+              text['title1'],
+              flex['flex-col'],
+              flex['item-center'],
+            )}
+          >
+            Scroll
+          </motion.div>
+          <motion.div
+            className={classNames(
+              styles['side-scroll-content'],
+              text['title1'],
+              flex['flex-col'],
+              flex['item-center'],
+            )}
+          >
+            Interaction
+          </motion.div>
+        </motion.div>
+      </motion.section>
+      <motion.footer
+        className={classNames(
+          layout['py-128'],
+          flex['flex-col'],
+          flex['item-center'],
+          text['title2'],
+        )}
+      >
+        React Scroll Interaction Example
+      </motion.footer>
     </>
   );
 };

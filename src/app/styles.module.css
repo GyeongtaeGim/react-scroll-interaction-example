@@ -43,6 +43,24 @@
   width: 100vw;
 }
 
+.side-scroll-container {
+  top:0px;
+  left: 0px;
+  position: sticky;
+  height: 100vh;
+}
+
+.side-scroll-content {
+  flex: 0 0 auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.side-scroll-container .side-scroll-content:nth-child(2n - 1) {
+  background-color: #b2e0ff;
+}
+
 @media (max-width: 1080px) {
   .card {
     flex: calc((100% / 2) - 48px);
