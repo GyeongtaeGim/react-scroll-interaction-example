@@ -19,8 +19,8 @@ const Card = () => {
       whileHover='hover'
       variants={{
         show: { rotateX: 0, originY: 0, scale: 1 },
-        hide: { rotateX: -60, scale: 0.8 },
-        hover: { scale: 1.1, originY: 0.5, transition: { duration: 0.1 } },
+        hide: { rotateX: 90, scale: 0.9 },
+        hover: { scale: 1.05, originY: 0.5, transition: { duration: 0.1 } },
       }}
       transition={{ duration: 1 }}
       className={classNames(styles['card'], flex['flex-col'], flex['gap-16'])}
